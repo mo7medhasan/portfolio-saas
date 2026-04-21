@@ -510,7 +510,38 @@ export const auditLogs = sqliteTable(
     portfolioIdx: index("audit_portfolio_idx").on(t.portfolioId),
   })
 );
+// src/db/schema.ts — ضيف في الآخر
+import { relations } from "drizzle-orm";
 
+export const portfoliosRelations = relations(portfolios, ({ one, many }) => ({
+  settings: one(portfolioSettings, {
+    fields: [portfolios.id],
+    references: [portfolioSettings.portfolioId],
+  }),
+  sections: many(sections),
+  designTokens: many(designTokens),
+}));
+
+export const sectionsRelations = relations(sections, ({ one }) => ({
+  portfolio: one(portfolios, {
+    fields: [sections.portfolioId],
+    references: [portfolios.id],
+  }),
+}));
+
+export const portfolioSettingsRelations = relations(portfolioSettings, ({ one }) => ({
+  portfolio: one(portfolios, {
+    fields: [portfolioSettings.portfolioId],
+    references: [portfolios.id],
+  }),
+}));
+
+export const designTokensRelations = relations(designTokens, ({ one }) => ({
+  portfolio: one(portfolios, {
+    fields: [designTokens.portfolioId],
+    references: [portfolios.id],
+  }),
+}));
 // ─────────────────────────────────────────────
 // TYPE EXPORTS
 // ─────────────────────────────────────────────

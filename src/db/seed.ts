@@ -82,7 +82,45 @@ async function seed() {
       .onConflictDoNothing(); // لو موجود — متعملش حاجة
     console.log(`  ✓ Plan: ${plan.name}`);
   }
+// Seed global presets
+const presets = [
+  {
+    id: "preset-minimal",
+    name: "Minimal",
+    isGlobal: true,
+    tokens: JSON.stringify({
+      "--color-primary": "#111111",
+      "--color-accent": "#6C63FF",
+      "--radius-lg": "4px",
+      "--radius-md": "2px",
+    }),
+  },
+  {
+    id: "preset-ocean",
+    name: "Ocean",
+    isGlobal: true,
+    tokens: JSON.stringify({
+      "--color-primary": "#0EA5E9",
+      "--color-accent": "#06B6D4",
+      "--radius-lg": "16px",
+    }),
+  },
+  {
+    id: "preset-forest",
+    name: "Forest",
+    isGlobal: true,
+    tokens: JSON.stringify({
+      "--color-primary": "#16A34A",
+      "--color-accent": "#84CC16",
+    }),
+  },
+];
 
+for (const preset of presets) {
+  await db.insert(schema.themePresets)
+    .values(preset)
+    .onConflictDoNothing();
+}
   console.log("✅ Seed complete!");
   process.exit(0);
 }
