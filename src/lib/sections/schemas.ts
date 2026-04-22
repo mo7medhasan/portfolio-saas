@@ -1,118 +1,154 @@
 // src/lib/sections/schemas.ts
+// Zod validation for each section content shape.
+// Used in API routes to validate before DB write.
 import { z } from "zod";
+import type { SectionType } from "@/types/sections";
 
-// ── Hero ─────────────────────────────────────────────────
+// ── Per-type schemas ──────────────────────────────────────────────────────────
 const heroSchema = z.object({
-  headline: z.string().default("مرحباً، أنا ..."),
+  badgeText: z.string().default(""),
+  headline: z.string().default(""),
   subheadline: z.string().default(""),
-  ctaText: z.string().default("تواصل معي"),
-  ctaUrl: z.string().default("#contact"),
-  bgType: z.enum(["gradient", "image", "solid", "video"]).default("gradient"),
-  bgValue: z.string().default(""),
+  ctaText: z.string().default(""),
+  ctaUrl: z.string().default(""),
+  secondaryCtaText: z.string().default(""),
+  secondaryCtaUrl: z.string().default(""),
   imageUrl: z.string().default(""),
-  layout: z.enum(["centered", "split-left", "split-right", "fullscreen"]).default("centered"),
 });
 
-// ── About ────────────────────────────────────────────────
 const aboutSchema = z.object({
   heading: z.string().default("عني"),
+  subheading: z.string().default(""),
   bio: z.string().default(""),
   photoUrl: z.string().default(""),
+  yearsExp: z.string().default(""),
+  projectsCount: z.string().default(""),
+  clientsCount: z.string().default(""),
   skills: z.array(z.string()).default([]),
-  layout: z.enum(["default", "timeline", "minimal"]).default("default"),
+  cvUrl: z.string().default(""),
 });
 
-// ── Services ─────────────────────────────────────────────
 const serviceItemSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string().default(""),
-  icon: z.string().default(""),
-  price: z.string().default(""),
+  id: z.string(), title: z.string(), description: z.string().default(""),
+  icon: z.string().default(""), price: z.string().default(""),
 });
-
 const servicesSchema = z.object({
-  heading: z.string().default("خدماتي"),
-  subheading: z.string().default(""),
+  heading: z.string().default(""), subheading: z.string().default(""),
   items: z.array(serviceItemSchema).default([]),
-  layout: z.enum(["grid-2", "grid-3", "grid-4", "list"]).default("grid-3"),
 });
 
-// ── Portfolio / Work ──────────────────────────────────────
 const projectItemSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string().default(""),
-  imageUrl: z.string().default(""),
-  url: z.string().default(""),
-  tags: z.array(z.string()).default([]),
+  id: z.string(), title: z.string(), description: z.string().default(""),
+  imageUrl: z.string().default(""), url: z.string().default(""),
+  repoUrl: z.string().default(""), tags: z.array(z.string()).default([]),
   featured: z.boolean().default(false),
 });
-
-const portfolioSectionSchema = z.object({
-  heading: z.string().default("أعمالي"),
-  subheading: z.string().default(""),
+const portfolioSchema = z.object({
+  heading: z.string().default(""), subheading: z.string().default(""),
   items: z.array(projectItemSchema).default([]),
-  layout: z.enum(["grid", "masonry", "carousel", "list"]).default("grid"),
   showFilter: z.boolean().default(true),
 });
 
-// ── Contact ───────────────────────────────────────────────
+const skillItemSchema = z.object({
+  id: z.string(), name: z.string(),
+  level: z.number().min(0).max(100).default(50), category: z.string().default(""),
+});
+const skillsSchema = z.object({
+  heading: z.string().default(""), subheading: z.string().default(""),
+  items: z.array(skillItemSchema).default([]),
+});
+
+const experienceItemSchema = z.object({
+  id: z.string(), role: z.string(), company: z.string(),
+  period: z.string().default(""), description: z.string().default(""),
+  logoUrl: z.string().default(""), current: z.boolean().default(false),
+});
+const experienceSchema = z.object({
+  heading: z.string().default(""), subheading: z.string().default(""),
+  items: z.array(experienceItemSchema).default([]),
+});
+
+const testimonialItemSchema = z.object({
+  id: z.string(), name: z.string(), role: z.string().default(""),
+  company: z.string().default(""), avatarUrl: z.string().default(""),
+  quote: z.string(), rating: z.number().min(1).max(5).default(5),
+});
+const testimonialsSchema = z.object({
+  heading: z.string().default(""), subheading: z.string().default(""),
+  items: z.array(testimonialItemSchema).default([]),
+});
+
+const faqItemSchema = z.object({
+  id: z.string(), question: z.string(), answer: z.string(),
+});
+const faqSchema = z.object({
+  heading: z.string().default(""), subheading: z.string().default(""),
+  items: z.array(faqItemSchema).default([]),
+});
+
+const statItemSchema = z.object({
+  id: z.string(), value: z.string(), label: z.string(),
+  prefix: z.string().default(""), suffix: z.string().default(""),
+});
+const statsSchema = z.object({
+  heading: z.string().default(""),
+  items: z.array(statItemSchema).default([]),
+});
+
 const contactSchema = z.object({
-  heading: z.string().default("تواصل معي"),
-  subheading: z.string().default(""),
-  email: z.string().email().default(""),
-  phone: z.string().default(""),
-  showForm: z.boolean().default(true),
+  heading: z.string().default(""), subheading: z.string().default(""),
+  email: z.string().default(""), phone: z.string().default(""),
+  location: z.string().default(""), showForm: z.boolean().default(true),
   socialLinks: z.object({
     github: z.string().default(""),
     linkedin: z.string().default(""),
     twitter: z.string().default(""),
     instagram: z.string().default(""),
+    behance: z.string().default(""),
+    dribbble: z.string().default(""),
   }).default({
     github: "",
     linkedin: "",
     twitter: "",
     instagram: "",
+    behance: "",
+    dribbble: "",
   }),
 });
 
-// ── Custom HTML ───────────────────────────────────────────
-const customHtmlSchema = z.object({
-  html: z.string().default(""),
-  css: z.string().default(""),
-  js: z.string().default(""),
+const ctaSchema = z.object({
+  heading: z.string().default(""), subheading: z.string().default(""),
+  ctaText: z.string().default(""), ctaUrl: z.string().default(""),
 });
 
-// ── Registry — بربط كل type بالـ schema بتاعه ─────────────
-export const sectionSchemas = {
-  hero: heroSchema,
-  about: aboutSchema,
-  services: servicesSchema,
-  portfolio: portfolioSectionSchema,
-  contact: contactSchema,
-  custom_html: customHtmlSchema,
-  // هتضيف باقي الـ types بنفس الـ pattern
+const customHtmlSchema = z.object({
+  html: z.string().default(""), css: z.string().default(""), js: z.string().default(""),
+});
+
+// ── Registry map ──────────────────────────────────────────────────────────────
+const schemaMap = {
+  hero: heroSchema, about: aboutSchema, services: servicesSchema,
+  portfolio: portfolioSchema, skills: skillsSchema, experience: experienceSchema,
+  testimonials: testimonialsSchema, contact: contactSchema,
+  faq: faqSchema, stats: statsSchema, cta: ctaSchema, custom_html: customHtmlSchema,
 } as const;
 
-export type SectionType = keyof typeof sectionSchemas;
+// ── Public helpers ────────────────────────────────────────────────────────────
+export type ValidationResult =
+  | { success: true;  data: Record<string, unknown> }
+  | { success: false; error: string };
 
-// ── Validate function — بتستخدمها في الـ API ─────────────
-export function validateSectionContent(type: string, content: unknown) {
-  const schema = sectionSchemas[type as SectionType];
-  if (!schema) {
-    return { success: false as const, error: `Unknown section type: ${type}` };
-  }
-
-  const result = schema.safeParse(content);
-  if (!result.success) {
-    return { success: false as const, error: result.error.issues[0].message };
-  }
-
-  return { success: true as const, data: result.data };
+export function validateSectionContent(
+  type: string,
+  content: unknown
+): ValidationResult {
+  const schema = schemaMap[type as SectionType];
+  if (!schema) return { success: false, error: `Unknown section type: ${type}` };
+  const result = schema.safeParse(content ?? {});
+  if (!result.success) return { success: false, error: result.error.issues[0].message };
+  return { success: true, data: result.data as Record<string, unknown> };
 }
 
-// ── Default content لكل type — للـ "Add Section" button ──
-export function getDefaultContent(type: SectionType) {
-  return sectionSchemas[type].parse({});
+export function getEmptyContent(type: SectionType): Record<string, unknown> {
+  return schemaMap[type].parse({}) as Record<string, unknown>;
 }

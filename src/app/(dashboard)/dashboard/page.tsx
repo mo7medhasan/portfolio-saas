@@ -2,9 +2,9 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { getPortfolioByUserId, getSectionsByPortfolioId } from "@/db/queries/portfolio";
-import { SectionsList } from "@/components/dashboard/SectionsList";
-import { PublishButton } from "@/components/dashboard/PublishButton";
-import Link from "next/link";
+import { SectionsList }   from "@/components/dashboard/sections/SectionsList";
+import { PublishButton }  from "@/components/dashboard/PublishButton";
+import type { SectionRow } from "@/types/sections";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -13,37 +13,28 @@ export default async function DashboardPage() {
   const portfolio = await getPortfolioByUserId(session.user.id);
   if (!portfolio) redirect("/login");
 
-  const allSections = await getSectionsByPortfolioId(portfolio.id);
+const sections = (await getSectionsByPortfolioId(portfolio.id)) as SectionRow[];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-<Link href="/dashboard/theme">Theme Editor</Link>
-
+    <div style={{ maxWidth: 860, margin: "0 auto", padding: "32px 16px" }}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-10">
+      <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 m-0">{portfolio.title}</h1>
-          <a
-            href={`/${portfolio.slug}`}
-            target="_blank"
-            className="text-sm text-indigo-500 hover:text-indigo-700 transition-colors mt-1 inline-block"
-          >
+          <h1 className="text-2xl font-bold"
+            style={{ fontFamily: "var(--font-heading,sans-serif)", color: "var(--color-heading,#111)" }}>
+            {portfolio.title}
+          </h1>
+          <a href={`/${portfolio.slug}`} target="_blank"
+            className="text-sm hover:underline"
+            style={{ color: "var(--color-primary,#6C63FF)" }}>
             /{portfolio.slug} ↗
           </a>
         </div>
-
-        {/* Publish / Unpublish */}
-        <PublishButton
-          portfolioId={portfolio.id}
-          currentStatus={portfolio.status}
-        />
+        <PublishButton currentStatus={portfolio.status} />
       </div>
 
-      {/* Sections List */}
-      <SectionsList
-        sections={allSections}
-        portfolioSlug={portfolio.slug}
-      />
+      {/* Sections */}
+      <SectionsList sections={sections} />
     </div>
   );
 }

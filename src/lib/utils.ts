@@ -1,7 +1,5 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-/** Merge Tailwind classes safely (shadcn convention). */
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+// src/lib/utils.ts
+// Simple className helper — no external dependencies required.
+export function cn(...classes: (string | undefined | null | false)[]): string {
+  return classes.filter(Boolean).join(" ");
 }

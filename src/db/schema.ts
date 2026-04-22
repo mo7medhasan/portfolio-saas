@@ -542,6 +542,13 @@ export const designTokensRelations = relations(designTokens, ({ one }) => ({
     references: [portfolios.id],
   }),
 }));
+
+export const subscriptionsRelations = relations(subscriptions, ({ one }) => ({
+  plan: one(plans, {
+    fields: [subscriptions.planId],
+    references: [plans.id],
+  }),
+}));
 // ─────────────────────────────────────────────
 // TYPE EXPORTS
 // ─────────────────────────────────────────────
