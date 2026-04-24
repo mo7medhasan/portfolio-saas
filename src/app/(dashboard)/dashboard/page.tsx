@@ -13,14 +13,13 @@ export default async function DashboardPage() {
   const portfolio = await getPortfolioByUserId(session.user.id);
   if (!portfolio) redirect("/login");
 
-  const rawSections = await getSectionsByPortfolioId(portfolio.id);
-  const sections = rawSections as SectionRow[];
+  const sections = (await getSectionsByPortfolioId(portfolio.id)) as SectionRow[];
 
   return (
     <>
       <TopBar
         title="Sections"
-        description={`/${portfolio.slug}`}
+        description={`portfolioapp.com/${portfolio.slug}`}
         actions={<PublishButton currentStatus={portfolio.status} />}
       />
       <div className="max-w-3xl mx-auto px-4 py-6">
