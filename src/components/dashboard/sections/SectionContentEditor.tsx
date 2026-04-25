@@ -3,6 +3,7 @@
 // Each section type gets a bespoke mini-form that matches its content shape.
 "use client";
 import type { SectionType } from "@/types/sections";
+import { ImageInput } from "@/components/dashboard/media/ImageInput";
 
 interface Props {
   sectionType: SectionType;
@@ -82,7 +83,7 @@ function HeroEditor({ c, set: s }: { c: Record<string,unknown>; set:(k:string,v:
         <Field label="نص الزر الثاني"><Input value={c.secondaryCtaText as string} onChange={v=>s("secondaryCtaText",v)} placeholder="تواصل معي" /></Field>
         <Field label="رابط الزر الثاني"><Input value={c.secondaryCtaUrl as string} onChange={v=>s("secondaryCtaUrl",v)} placeholder="#contact" /></Field>
       </div>
-      <Field label="رابط الصورة"><Input value={c.imageUrl as string} onChange={v=>s("imageUrl",v)} placeholder="https://..." /></Field>
+      <ImageInput label="الصورة الشخصية" value={c.imageUrl as string} onChange={v=>s("imageUrl",v)} />
     </>
   );
 }
@@ -102,7 +103,7 @@ function AboutEditor({ c, set: s }: { c: Record<string,unknown>; set:(k:string,v
       <Field label="المهارات (مفصولة بفاصلة)">
         <Input value={skills.join(", ")} onChange={v=>s("skills", v.split(",").map(x=>x.trim()).filter(Boolean))} placeholder="React, TypeScript, Node.js" />
       </Field>
-      <Field label="رابط الصورة"><Input value={c.photoUrl as string} onChange={v=>s("photoUrl",v)} placeholder="https://..." /></Field>
+      <ImageInput label="الصورة الشخصية" value={c.photoUrl as string} onChange={v=>s("photoUrl",v)} />
       <Field label="رابط السيرة الذاتية"><Input value={c.cvUrl as string} onChange={v=>s("cvUrl",v)} placeholder="https://..." /></Field>
     </>
   );
@@ -158,7 +159,7 @@ function PortfolioEditor({ c, set: s }: { c: Record<string,unknown>; set:(k:stri
               <Field label="رابط المشروع"><Input value={item.url} onChange={v=>update(i,"url",v)} placeholder="https://..." /></Field>
               <Field label="رابط GitHub"><Input value={item.repoUrl} onChange={v=>update(i,"repoUrl",v)} placeholder="https://github.com/..." /></Field>
             </div>
-            <Field label="رابط الصورة"><Input value={item.imageUrl} onChange={v=>update(i,"imageUrl",v)} placeholder="https://..." /></Field>
+            <ImageInput label="رابط الصورة" value={item.imageUrl} onChange={v=>update(i,"imageUrl",v)} />
             <Field label="Tags (مفصولة بفاصلة)">
               <Input value={item.tags.join(", ")} onChange={v=>update(i,"tags",v.split(",").map(x=>x.trim()).filter(Boolean))} placeholder="React, TypeScript" />
             </Field>
@@ -217,7 +218,7 @@ function ExperienceEditor({ c, set: s }: { c: Record<string,unknown>; set:(k:str
             </div>
             <Field label="الفترة الزمنية"><Input value={item.period} onChange={v=>update(i,"period",v)} placeholder="2022 - الآن" /></Field>
             <Field label="الوصف"><Textarea value={item.description} onChange={v=>update(i,"description",v)} placeholder="وصف المهام..." /></Field>
-            <Field label="رابط لوجو الشركة"><Input value={item.logoUrl} onChange={v=>update(i,"logoUrl",v)} placeholder="https://..." /></Field>
+            <ImageInput label="رابط لوجو الشركة" value={item.logoUrl} onChange={v=>update(i,"logoUrl",v)} />
             <label className="flex items-center gap-2 text-sm cursor-pointer" style={{ color:"var(--color-text-primary,#111)" }}>
               <input type="checkbox" checked={item.current} onChange={e=>update(i,"current",e.target.checked)} className="w-4 h-4 rounded" />
               وظيفة حالية
@@ -251,7 +252,7 @@ function TestimonialsEditor({ c, set: s }: { c: Record<string,unknown>; set:(k:s
               <Field label="الشركة"><Input value={item.company} onChange={v=>update(i,"company",v)} /></Field>
             </div>
             <Field label="الاقتباس"><Textarea value={item.quote} onChange={v=>update(i,"quote",v)} placeholder="رأيه في عملك..." /></Field>
-            <Field label="رابط الصورة الشخصية"><Input value={item.avatarUrl} onChange={v=>update(i,"avatarUrl",v)} placeholder="https://..." /></Field>
+            <ImageInput label="رابط الصورة الشخصية" value={item.avatarUrl} onChange={v=>update(i,"avatarUrl",v)} />
           </ItemCard>
         ))}
       </div>
