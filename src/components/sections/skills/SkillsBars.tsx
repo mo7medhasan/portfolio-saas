@@ -3,15 +3,15 @@ import type { SkillsContent } from "@/types/sections";
 
 export function SkillsBars({ content: c }: { content: SkillsContent }) {
   return (
-    <section id="skills" className="py-[var(--section-padding-y,6rem)] bg-[var(--color-background,#fff)]">
-      <div className="mx-auto max-w-[var(--container-max-width,1200px)] px-6">
+    <section id="skills" className="py-(--section-padding-y,6rem) bg-(--color-background,#fff)">
+      <div className="mx-auto max-w-(--container-max-width,1200px) px-6">
         {c.heading && (
           <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-[var(--font-weight-heading,700)] whitespace-nowrap"
+            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-(--font-weight-heading,700) whitespace-nowrap"
               style={{ fontFamily:"var(--font-heading,sans-serif)", color:"var(--color-heading,#111)" }}>
               {c.heading}
             </h2>
-            <div className="flex-1 h-px bg-[var(--color-border,#e5e5e5)]" />
+            <div className="flex-1 h-px bg-(--color-border,#e5e5e5)" />
           </div>
         )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

@@ -3,17 +3,17 @@ import type { ExperienceContent } from "@/types/sections";
 
 export function ExperienceCards({ content: c }: { content: ExperienceContent }) {
   return (
-    <section id="experience" className="py-[var(--section-padding-y,6rem)] bg-[var(--color-surface,#f8f8f8)]">
-      <div className="mx-auto max-w-[var(--container-max-width,1200px)] px-6">
+    <section id="experience" className="py-(--section-padding-y,6rem) bg-(--color-surface,#f8f8f8)">
+      <div className="mx-auto max-w-(--container-max-width,1200px) px-6">
         {c.heading && (
-          <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-[var(--font-weight-heading,700)] text-center mb-12"
+          <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-(--font-weight-heading,700) text-center mb-12"
             style={{ fontFamily:"var(--font-heading,sans-serif)", color:"var(--color-heading,#111)" }}>
             {c.heading}
           </h2>
         )}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--gap-cards,24px)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-(--gap-cards,24px)">
           {c.items.map((item) => (
-            <div key={item.id} className="p-6 rounded-[var(--radius-lg,16px)] border border-[var(--color-border,#e5e5e5)] space-y-3"
+            <div key={item.id} className="p-6 rounded-(--radius-lg,16px) border border-(--color-border,#e5e5e5) space-y-3"
               style={{ background:"var(--color-background,#fff)", boxShadow:"var(--shadow-card)" }}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">

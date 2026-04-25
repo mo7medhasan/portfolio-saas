@@ -35,9 +35,9 @@ export function PasswordGate({ slug }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-[var(--color-background,#fff)]">
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-(--color-background,#fff)">
       <div
-        className="w-full max-w-sm p-8 rounded-[var(--radius-lg,16px)] border border-[var(--color-border,#e5e5e5)]"
+        className="w-full max-w-sm p-8 rounded-(--radius-lg,16px) border border-(--color-border,#e5e5e5)"
         style={{ boxShadow: "var(--shadow-card)" }}
       >
         {/* Lock icon */}
@@ -73,7 +73,7 @@ export function PasswordGate({ slug }: Props) {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="الباسورد"
             required
-            className="w-full px-4 py-3 text-sm rounded-[var(--radius-md,8px)] border border-[var(--color-border,#e5e5e5)] outline-none transition-all focus:border-[var(--color-primary,#6C63FF)] focus:ring-2 focus:ring-[var(--color-primary,#6C63FF)]/10"
+            className="w-full px-4 py-3 text-sm rounded-(--radius-md,8px) border border-(--color-border,#e5e5e5) outline-none transition-all focus:border-(--color-primary,#6C63FF) focus:ring-2 focus:ring-(--color-primary,#6C63FF)/10"
             style={{
               background: "var(--color-surface,#f8f8f8)",
               color: "var(--color-text-primary,#111)",
@@ -87,7 +87,7 @@ export function PasswordGate({ slug }: Props) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-[var(--radius-md,8px)] text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+            className="w-full py-3 rounded-(--radius-md,8px) text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
             style={{ background: "var(--color-primary,#6C63FF)" }}
           >
             {loading ? "جاري التحقق..." : "دخول"}

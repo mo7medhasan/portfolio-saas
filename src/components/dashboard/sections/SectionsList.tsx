@@ -57,14 +57,14 @@ export function SectionsList({ sections: initial }: Props) {
         {/* Add button */}
         <div className="flex flex-wrap items-center gap-5 justify-between">
           <button onClick={() => setShowAdd(true)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[var(--radius-md,8px)] text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-(--radius-md,8px) text-sm font-medium text-white transition-opacity hover:opacity-90"
             style={{ background: "var(--color-primary,#6C63FF)" }}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
             إضافة Section
           </button>
 
           <Link href="/dashboard/theme">
-            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[var(--radius-md,8px)] text-sm font-medium text-white transition-opacity hover:opacity-90"
+            <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-(--radius-md,8px) text-sm font-medium text-white transition-opacity hover:opacity-90"
               style={{ background: "var(--color-primary,#6C63FF)" }}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
               إدارة الثيمات
@@ -91,7 +91,7 @@ export function SectionsList({ sections: initial }: Props) {
             const variantLabel = entry.variants.find(v => v.id === sec.variant)?.label ?? sec.variant;
             return (
               <div key={sec.id}
-                className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-[var(--color-border,#e5e5e5)] transition-all hover:border-[var(--color-primary,#6C63FF)]/30"
+                className="flex items-center gap-3 px-4 py-3.5 rounded-xl border border-(--color-border,#e5e5e5) transition-all hover:border-(--color-primary,#6C63FF)/30"
                 style={{ background: "var(--color-background,#fff)", opacity: sec.isVisible ? 1 : 0.55 }}>
 
                 {/* Drag handle */}
@@ -120,12 +120,12 @@ export function SectionsList({ sections: initial }: Props) {
                 <div className="flex items-center gap-1.5 flex-shrink-0">
                   {/* Edit */}
                   <button onClick={() => setEditing(sec)}
-                    className="h-8 px-3 text-xs font-medium rounded-lg border border-[var(--color-border,#e5e5e5)] transition-all hover:border-[var(--color-primary,#6C63FF)] hover:text-[var(--color-primary,#6C63FF)]"
+                    className="h-8 px-3 text-xs font-medium rounded-lg border border-(--color-border,#e5e5e5) transition-all hover:border-(--color-primary,#6C63FF) hover:text-(--color-primary,#6C63FF)"
                     style={{ color: "var(--color-text-secondary,#555)" }}>تعديل</button>
 
                   {/* Visibility */}
                   <button onClick={() => handleToggle(sec.id)} title={sec.isVisible ? "إخفاء" : "إظهار"}
-                    className="w-8 h-8 rounded-lg border border-[var(--color-border,#e5e5e5)] flex items-center justify-center transition-colors hover:border-[var(--color-primary,#6C63FF)]"
+                    className="w-8 h-8 rounded-lg border border-(--color-border,#e5e5e5) flex items-center justify-center transition-colors hover:border-(--color-primary,#6C63FF)"
                     style={{ color: "var(--color-text-secondary,#555)" }}>
                     {sec.isVisible
                       ? <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" /><circle cx="12" cy="12" r="3" /></svg>
@@ -135,7 +135,7 @@ export function SectionsList({ sections: initial }: Props) {
 
                   {/* Delete */}
                   <button onClick={() => handleDelete(sec.id)} disabled={deleting === sec.id}
-                    className="w-8 h-8 rounded-lg border border-[var(--color-border,#e5e5e5)] flex items-center justify-center transition-colors hover:border-red-300 hover:text-red-500 disabled:opacity-40"
+                    className="w-8 h-8 rounded-lg border border-(--color-border,#e5e5e5) flex items-center justify-center transition-colors hover:border-red-300 hover:text-red-500 disabled:opacity-40"
                     style={{ color: "var(--color-text-secondary,#555)" }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                       <polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14H6L5 6" /><path d="M10 11v6M14 11v6" /><path d="M9 6V4h6v2" />

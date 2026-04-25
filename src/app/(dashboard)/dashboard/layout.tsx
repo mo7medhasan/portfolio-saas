@@ -30,7 +30,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       {/* Sidebar — desktop only */}
       <div
-        className="hidden md:flex flex-col w-56 shrink-0 h-full border-r border-[var(--color-border,#e5e5e5)]"
+        className="hidden md:flex flex-col w-56 shrink-0 h-full border-r border-(--color-border,#e5e5e5)"
         style={{ background: "var(--color-background,#fff)" }}
       >
         <Sidebar

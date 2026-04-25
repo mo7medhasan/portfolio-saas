@@ -70,10 +70,10 @@ function ColorRow({
   const isDefault = token.value === token.defaultValue;
 
   return (
-    <div className="flex items-center justify-between py-3 border-b border-[var(--color-border,#e5e5e5)] last:border-0">
+    <div className="flex items-center justify-between py-3 border-b border-(--color-border,#e5e5e5) last:border-0">
       <div className="flex items-center gap-3 flex-1 min-w-0">
         {/* Color swatch + picker */}
-        <div className="relative w-8 h-8 rounded-md border border-[var(--color-border,#e5e5e5)] overflow-hidden flex-shrink-0 cursor-pointer">
+        <div className="relative w-8 h-8 rounded-md border border-(--color-border,#e5e5e5) overflow-hidden flex-shrink-0 cursor-pointer">
           <div
             className="absolute inset-0"
             style={{ background: token.value }}
@@ -115,7 +115,7 @@ function ColorRow({
               onUpdate(token.key, val);
             }
           }}
-          className="w-24 px-2 py-1 text-xs font-mono rounded border border-[var(--color-border,#e5e5e5)] outline-none focus:border-[var(--color-primary,#6C63FF)]"
+          className="w-24 px-2 py-1 text-xs font-mono rounded border border-(--color-border,#e5e5e5) outline-none focus:border-(--color-primary,#6C63FF)"
           style={{
             background: "var(--color-surface,#f8f8f8)",
             color: "var(--color-text-primary,#111)",
@@ -127,7 +127,7 @@ function ColorRow({
           <button
             onClick={() => onReset(token.key)}
             title="Reset to default"
-            className="w-7 h-7 rounded flex items-center justify-center transition-colors hover:bg-[var(--color-surface,#f8f8f8)]"
+            className="w-7 h-7 rounded flex items-center justify-center transition-colors hover:bg-(--color-surface,#f8f8f8)"
             style={{ color: "var(--color-text-secondary,#555)" }}
           >
             <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5">
@@ -151,7 +151,7 @@ function SelectRow({
   onUpdate: (key: string, value: string) => void;
 }) {
   return (
-    <div className="flex items-center justify-between py-3 border-b border-[var(--color-border,#e5e5e5)] last:border-0">
+    <div className="flex items-center justify-between py-3 border-b border-(--color-border,#e5e5e5) last:border-0">
       <p
         className="text-sm font-medium"
         style={{ color: "var(--color-text-primary,#111)" }}
@@ -161,7 +161,7 @@ function SelectRow({
       <select
         value={token.value}
         onChange={(e) => onUpdate(token.key, e.target.value)}
-        className="text-sm px-3 py-1.5 rounded border border-[var(--color-border,#e5e5e5)] outline-none focus:border-[var(--color-primary,#6C63FF)] max-w-[180px]"
+        className="text-sm px-3 py-1.5 rounded border border-(--color-border,#e5e5e5) outline-none focus:border-(--color-primary,#6C63FF) max-w-[180px]"
         style={{
           background: "var(--color-surface,#f8f8f8)",
           color: "var(--color-text-primary,#111)",
@@ -196,7 +196,7 @@ function SliderRow({
   const numericValue = parseFloat(token.value);
 
   return (
-    <div className="py-3 border-b border-[var(--color-border,#e5e5e5)] last:border-0 space-y-2">
+    <div className="py-3 border-b border-(--color-border,#e5e5e5) last:border-0 space-y-2">
       <div className="flex items-center justify-between">
         <p
           className="text-sm font-medium"
@@ -218,7 +218,7 @@ function SliderRow({
         step={step}
         value={numericValue}
         onChange={(e) => onUpdate(token.key, `${e.target.value}${unit}`)}
-        className="w-full accent-[var(--color-primary,#6C63FF)]"
+        className="w-full accent-(--color-primary,#6C63FF)"
       />
     </div>
   );
@@ -300,7 +300,7 @@ export function ThemeEditor() {
               key={preset.id}
               onClick={() => applyPreset(preset.id)}
               disabled={isSaving}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-lg border border-[var(--color-border,#e5e5e5)] text-left transition-all hover:border-[var(--color-primary,#6C63FF)] hover:-translate-y-0.5 disabled:opacity-50"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-lg border border-(--color-border,#e5e5e5) text-left transition-all hover:border-(--color-primary,#6C63FF) hover:-translate-y-0.5 disabled:opacity-50"
               style={{ background: "var(--color-background,#fff)" }}
             >
               {/* Color preview dots */}
@@ -326,7 +326,7 @@ export function ThemeEditor() {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[var(--color-border,#e5e5e5)]">
+      <div className="flex border-b border-(--color-border,#e5e5e5)">
         {(["colors", "typography", "spacing"] as const).map((tab) => (
           <button
             key={tab}
@@ -334,7 +334,7 @@ export function ThemeEditor() {
             className={[
               "px-4 py-2.5 text-sm font-medium transition-colors border-b-2 -mb-px",
               activeTab === tab
-                ? "border-[var(--color-primary,#6C63FF)] text-[var(--color-primary,#6C63FF)]"
+                ? "border-(--color-primary,#6C63FF) text-(--color-primary,#6C63FF)"
                 : "border-transparent",
             ].join(" ")}
             style={{
@@ -351,7 +351,7 @@ export function ThemeEditor() {
 
       {/* Tab content */}
       <div
-        className="rounded-xl border border-[var(--color-border,#e5e5e5)] divide-y divide-[var(--color-border,#e5e5e5)] overflow-hidden"
+        className="rounded-xl border border-(--color-border,#e5e5e5) divide-y divide-(--color-border,#e5e5e5) overflow-hidden"
         style={{ background: "var(--color-background,#fff)" }}
       >
 

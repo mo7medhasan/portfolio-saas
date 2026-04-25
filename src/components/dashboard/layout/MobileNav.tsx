@@ -17,7 +17,7 @@ export function MobileNav() {
 
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 flex items-stretch border-t border-[var(--color-border,#e5e5e5)] md:hidden"
+      className="fixed bottom-0 inset-x-0 z-40 flex items-stretch border-t border-(--color-border,#e5e5e5) md:hidden"
       style={{ background: "var(--color-background,#fff)" }}
     >
       {TABS.map(({ href, label, Icon }) => {

@@ -54,7 +54,7 @@ export function Sidebar({ portfolioSlug, portfolioTitle, userName, unreadCount =
     <aside className="flex flex-col h-full select-none">
 
       {/* Brand */}
-      <div className="px-4 h-14 flex items-center border-b border-[var(--color-border,#e5e5e5)] shrink-0">
+      <div className="px-4 h-14 flex items-center border-b border-(--color-border,#e5e5e5) shrink-0">
         <Link href="/dashboard" className="flex items-center gap-2.5 min-w-0">
           <span
             className="size-7 rounded-lg flex items-center justify-center text-white text-xs font-bold shrink-0"
@@ -72,12 +72,12 @@ export function Sidebar({ portfolioSlug, portfolioTitle, userName, unreadCount =
       </div>
 
       {/* Portfolio preview */}
-      <div className="px-3 py-2.5 border-b border-[var(--color-border,#e5e5e5)] shrink-0">
+      <div className="px-3 py-2.5 border-b border-(--color-border,#e5e5e5) shrink-0">
         <a
           href={`/${portfolioSlug}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors hover:bg-[var(--color-surface,#f8f8f8)] group min-w-0"
+          className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors hover:bg-(--color-surface,#f8f8f8) group min-w-0"
           style={{ color: "var(--color-text-secondary,#555)" }}
         >
           <span
@@ -156,10 +156,10 @@ export function Sidebar({ portfolioSlug, portfolioTitle, userName, unreadCount =
       </nav>
 
       {/* User */}
-      <div className="px-3 py-3 border-t border-[var(--color-border,#e5e5e5)] shrink-0">
+      <div className="px-3 py-3 border-t border-(--color-border,#e5e5e5) shrink-0">
         <Link
           href="/dashboard/account"
-          className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg transition-colors hover:bg-[var(--color-surface,#f8f8f8)] group"
+          className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg transition-colors hover:bg-(--color-surface,#f8f8f8) group"
         >
           {/* Avatar initial */}
           <span

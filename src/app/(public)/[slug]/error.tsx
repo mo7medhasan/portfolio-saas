@@ -31,7 +31,7 @@ export default function Error({
       </div>
       <button
         onClick={reset}
-        className="px-5 py-2.5 rounded-[var(--radius-md,8px)] text-sm font-medium text-white"
+        className="px-5 py-2.5 rounded-(--radius-md,8px) text-sm font-medium text-white"
         style={{ background: "var(--color-primary,#6C63FF)" }}
       >
         حاول تاني

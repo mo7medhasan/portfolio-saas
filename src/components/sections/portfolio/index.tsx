@@ -5,27 +5,27 @@ interface Props { content: PortfolioContent; variant: string; }
 
 export function PortfolioSection({ content: c, variant }: Props) {
   const gridCls = variant==="masonry"
-    ? "columns-1 sm:columns-2 lg:columns-3 gap-[var(--gap-cards,24px)]"
-    : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[var(--gap-cards,24px)]";
+    ? "columns-1 sm:columns-2 lg:columns-3 gap-(--gap-cards,24px)"
+    : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-(--gap-cards,24px)";
 
   const featured = c.items.filter(i=>i.featured);
   const rest     = c.items.filter(i=>!i.featured);
 
   return (
-    <section id="portfolio" className="py-[var(--section-padding-y,6rem)] bg-[var(--color-background,#fff)]">
-      <div className="mx-auto max-w-[var(--container-max-width,1200px)] px-6">
+    <section id="portfolio" className="py-(--section-padding-y,6rem) bg-(--color-background,#fff)">
+      <div className="mx-auto max-w-(--container-max-width,1200px) px-6">
         {c.heading && (
           <div className="flex items-center gap-4 mb-14">
-            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-[var(--font-weight-heading,700)] whitespace-nowrap"
+            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-(--font-weight-heading,700) whitespace-nowrap"
               style={{ fontFamily:"var(--font-heading,sans-serif)", color:"var(--color-heading,#111)" }}>{c.heading}</h2>
-            <div className="flex-1 h-px bg-[var(--color-border,#e5e5e5)]" />
+            <div className="flex-1 h-px bg-(--color-border,#e5e5e5)" />
           </div>
         )}
 
         {variant==="featured" && featured.length>0 && (
           <div className="mb-8">
             {featured.map(p=>(
-              <div key={p.id} className="grid grid-cols-1 md:grid-cols-2 gap-8 rounded-2xl border border-[var(--color-border,#e5e5e5)] overflow-hidden mb-6"
+              <div key={p.id} className="grid grid-cols-1 md:grid-cols-2 gap-8 rounded-2xl border border-(--color-border,#e5e5e5) overflow-hidden mb-6"
                 style={{ background:"var(--color-surface,#f8f8f8)" }}>
                 {p.imageUrl && <img src={p.imageUrl} alt={p.title} className="w-full h-64 md:h-full object-cover" />}
                 <div className="p-8 flex flex-col justify-center gap-4">
@@ -46,7 +46,7 @@ export function PortfolioSection({ content: c, variant }: Props) {
 
         <div className={gridCls}>
           {(variant==="featured" ? rest : c.items).map(p=>(
-            <div key={p.id} className={`rounded-[var(--radius-lg,16px)] border border-[var(--color-border,#e5e5e5)] overflow-hidden group transition-all hover:-translate-y-1 ${variant==="masonry"?"mb-[var(--gap-cards,24px)] break-inside-avoid":""}`}
+            <div key={p.id} className={`rounded-(--radius-lg,16px) border border-(--color-border,#e5e5e5) overflow-hidden group transition-all hover:-translate-y-1 ${variant==="masonry"?"mb-(--gap-cards,24px) break-inside-avoid":""}`}
               style={{ background:"var(--color-surface,#f8f8f8)", boxShadow:"var(--shadow-card)" }}>
               {p.imageUrl && (
                 <div className="overflow-hidden h-48">

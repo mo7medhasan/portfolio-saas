@@ -19,14 +19,14 @@ export function SectionTypePicker({ onSelect }: Props) {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {entries.map((e) => (
           <button key={e.type} onClick={() => onSelect(e.type)}
-            className="group flex flex-col gap-3 p-4 rounded-xl border border-[var(--color-border,#e5e5e5)] text-left transition-all hover:border-[var(--color-primary,#6C63FF)] hover:-translate-y-0.5"
+            className="group flex flex-col gap-3 p-4 rounded-xl border border-(--color-border,#e5e5e5) text-left transition-all hover:border-(--color-primary,#6C63FF) hover:-translate-y-0.5"
             style={{ background:"var(--color-background,#fff)" }}>
             <span className="text-xl w-10 h-10 rounded-lg flex items-center justify-center"
               style={{ background:"color-mix(in srgb,var(--color-primary,#6C63FF) 8%,transparent)" }}>
               {e.icon}
             </span>
             <div>
-              <p className="text-sm font-semibold transition-colors group-hover:text-[var(--color-primary,#6C63FF)]"
+              <p className="text-sm font-semibold transition-colors group-hover:text-(--color-primary,#6C63FF)"
                 style={{ color:"var(--color-text-primary,#111)" }}>{e.label}</p>
               <p className="text-xs mt-0.5 leading-snug" style={{ color:"var(--color-text-secondary,#555)" }}>{e.description}</p>
             </div>

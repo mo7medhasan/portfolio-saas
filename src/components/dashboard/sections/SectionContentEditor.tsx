@@ -22,7 +22,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-const inputCls = "w-full px-3 py-2.5 text-sm rounded-[var(--radius-md,8px)] border border-[var(--color-border,#e5e5e5)] outline-none transition-colors focus:border-[var(--color-primary,#6C63FF)]";
+const inputCls = "w-full px-3 py-2.5 text-sm rounded-(--radius-md,8px) border border-(--color-border,#e5e5e5) outline-none transition-colors focus:border-(--color-primary,#6C63FF)";
 const inputStyle = { background:"var(--color-surface,#f8f8f8)", color:"var(--color-text-primary,#111)" };
 
 function Input({ value, onChange, placeholder, type = "text" }: { value: string; onChange:(v:string)=>void; placeholder?:string; type?:string }) {
@@ -40,7 +40,7 @@ function set(content: Record<string,unknown>, key: string, value: unknown) {
 function AddBtn({ onClick, label = "إضافة" }: { onClick:()=>void; label?:string }) {
   return (
     <button type="button" onClick={onClick}
-      className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border border-dashed border-[var(--color-primary,#6C63FF)] transition-colors hover:bg-[color-mix(in_srgb,var(--color-primary,#6C63FF)_6%,transparent)]"
+      className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border border-dashed border-(--color-primary,#6C63FF) transition-colors hover:bg-[color-mix(in_srgb,var(--color-primary,#6C63FF)_6%,transparent)]"
       style={{ color:"var(--color-primary,#6C63FF)" }}>
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
       {label}
@@ -60,7 +60,7 @@ function RemoveBtn({ onClick }: { onClick:()=>void }) {
 
 function ItemCard({ children, onRemove }: { children: React.ReactNode; onRemove:()=>void }) {
   return (
-    <div className="p-4 rounded-xl border border-[var(--color-border,#e5e5e5)] space-y-3 relative"
+    <div className="p-4 rounded-xl border border-(--color-border,#e5e5e5) space-y-3 relative"
       style={{ background:"var(--color-background,#fff)" }}>
       <div className="absolute top-3 right-3"><RemoveBtn onClick={onRemove} /></div>
       {children}

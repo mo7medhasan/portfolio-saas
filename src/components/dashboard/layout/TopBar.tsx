@@ -8,7 +8,7 @@ interface Props {
 export function TopBar({ title, description, actions }: Props) {
   return (
     <header
-      className="sticky top-0 z-20 flex items-center justify-between px-6 h-14 border-b border-[var(--color-border,#e5e5e5)] shrink-0"
+      className="sticky top-0 z-20 flex items-center justify-between px-6 h-14 border-b border-(--color-border,#e5e5e5) shrink-0"
       style={{ background: "var(--color-background,#fff)" }}
     >
       <div className="min-w-0">

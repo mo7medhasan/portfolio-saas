@@ -79,9 +79,9 @@ export function ContactSection({ content }: Props) {
   return (
     <section
       id="contact"
-      className="py-[var(--section-padding-y,6rem)] bg-[var(--color-surface,#f8f8f8)]"
+      className="py-(--section-padding-y,6rem) bg-(--color-surface,#f8f8f8)"
     >
-      <div className="mx-auto max-w-[var(--container-max-width,1200px)] px-6">
+      <div className="mx-auto max-w-(--container-max-width,1200px) px-6">
 
         {/* Section header */}
         <div className="flex items-center gap-4 mb-14">
@@ -91,7 +91,7 @@ export function ContactSection({ content }: Props) {
           >
             {c.heading ?? "تواصل معي"}
           </span>
-          <div className="flex-1 h-px bg-[var(--color-border,#e5e5e5)]" />
+          <div className="flex-1 h-px bg-(--color-border,#e5e5e5)" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -100,7 +100,7 @@ export function ContactSection({ content }: Props) {
           <div className="space-y-10">
             <div className="space-y-4">
               <h2
-                className="text-[clamp(1.75rem,3vw,2.75rem)] leading-tight font-[var(--font-weight-heading,700)]"
+                className="text-[clamp(1.75rem,3vw,2.75rem)] leading-tight font-(--font-weight-heading,700)"
                 style={{
                   fontFamily: "var(--font-heading,sans-serif)",
                   color: "var(--color-heading,#111)",
@@ -110,7 +110,7 @@ export function ContactSection({ content }: Props) {
               </h2>
               {c.subheading && (
                 <p
-                  className="text-base leading-[var(--line-height-body,1.7)]"
+                  className="text-base leading-(--line-height-body,1.7)"
                   style={{ color: "var(--color-text-secondary,#555)" }}
                 >
                   {c.subheading}
@@ -123,11 +123,11 @@ export function ContactSection({ content }: Props) {
               {c.email && (
                 <a
                   href={`mailto:${c.email}`}
-                  className="flex items-center gap-4 p-4 rounded-[var(--radius-lg,16px)] border border-[var(--color-border,#e5e5e5)] transition-all duration-[var(--transition-speed,0.2s)] hover:border-[var(--color-primary,#6C63FF)] hover:-translate-y-0.5 group"
+                  className="flex items-center gap-4 p-4 rounded-(--radius-lg,16px) border border-(--color-border,#e5e5e5) transition-all duration-(--transition-speed,0.2s) hover:border-(--color-primary,#6C63FF) hover:-translate-y-0.5 group"
                   style={{ background: "var(--color-background,#fff)" }}
                 >
                   <div
-                    className="w-11 h-11 rounded-[var(--radius-md,8px)] flex items-center justify-center flex-shrink-0"
+                    className="w-11 h-11 rounded-(--radius-md,8px) flex items-center justify-center flex-shrink-0"
                     style={{ background: "color-mix(in srgb, var(--color-primary,#6C63FF) 10%, transparent)" }}
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary,#6C63FF)" strokeWidth="1.5">
@@ -137,7 +137,7 @@ export function ContactSection({ content }: Props) {
                   <div>
                     <div className="text-xs mb-0.5" style={{ color: "var(--color-text-secondary,#555)" }}>إيميل</div>
                     <div
-                      className="text-sm font-medium transition-colors group-hover:text-[var(--color-primary,#6C63FF)]"
+                      className="text-sm font-medium transition-colors group-hover:text-(--color-primary,#6C63FF)"
                       style={{ color: "var(--color-text-primary,#111)" }}
                     >
                       {c.email}
@@ -149,11 +149,11 @@ export function ContactSection({ content }: Props) {
               {c.phone && (
                 <a
                   href={`tel:${c.phone}`}
-                  className="flex items-center gap-4 p-4 rounded-[var(--radius-lg,16px)] border border-[var(--color-border,#e5e5e5)] transition-all duration-[var(--transition-speed,0.2s)] hover:border-[var(--color-primary,#6C63FF)] hover:-translate-y-0.5 group"
+                  className="flex items-center gap-4 p-4 rounded-(--radius-lg,16px) border border-(--color-border,#e5e5e5) transition-all duration-(--transition-speed,0.2s) hover:border-(--color-primary,#6C63FF) hover:-translate-y-0.5 group"
                   style={{ background: "var(--color-background,#fff)" }}
                 >
                   <div
-                    className="w-11 h-11 rounded-[var(--radius-md,8px)] flex items-center justify-center flex-shrink-0"
+                    className="w-11 h-11 rounded-(--radius-md,8px) flex items-center justify-center flex-shrink-0"
                     style={{ background: "color-mix(in srgb, var(--color-primary,#6C63FF) 10%, transparent)" }}
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary,#6C63FF)" strokeWidth="1.5">
@@ -163,7 +163,7 @@ export function ContactSection({ content }: Props) {
                   <div>
                     <div className="text-xs mb-0.5" style={{ color: "var(--color-text-secondary,#555)" }}>هاتف</div>
                     <div
-                      className="text-sm font-medium transition-colors group-hover:text-[var(--color-primary,#6C63FF)]"
+                      className="text-sm font-medium transition-colors group-hover:text-(--color-primary,#6C63FF)"
                       style={{ color: "var(--color-text-primary,#111)" }}
                     >
                       {c.phone}
@@ -186,7 +186,7 @@ export function ContactSection({ content }: Props) {
                       href={url as string}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-[var(--radius-md,8px)] border border-[var(--color-border,#e5e5e5)] flex items-center justify-center transition-all duration-[var(--transition-speed,0.2s)] hover:border-[var(--color-primary,#6C63FF)] hover:text-[var(--color-primary,#6C63FF)] hover:-translate-y-0.5"
+                      className="w-10 h-10 rounded-(--radius-md,8px) border border-(--color-border,#e5e5e5) flex items-center justify-center transition-all duration-(--transition-speed,0.2s) hover:border-(--color-primary,#6C63FF) hover:text-(--color-primary,#6C63FF) hover:-translate-y-0.5"
                       style={{ color: "var(--color-text-secondary,#555)", background: "var(--color-background,#fff)" }}
                     >
                       {socialIcons[platform] ?? <span className="text-xs">{platform[0].toUpperCase()}</span>}
@@ -200,7 +200,7 @@ export function ContactSection({ content }: Props) {
           {/* Right — form */}
           {showForm && (
             <div
-              className="p-8 rounded-[var(--radius-lg,16px)] border border-[var(--color-border,#e5e5e5)]"
+              className="p-8 rounded-(--radius-lg,16px) border border-(--color-border,#e5e5e5)"
               style={{
                 background: "var(--color-background,#fff)",
                 boxShadow: "var(--shadow-card)",
@@ -242,7 +242,7 @@ export function ContactSection({ content }: Props) {
                       value={form.name}
                       onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
                       placeholder="اسمك الكريم"
-                      className="w-full px-4 py-3 text-sm rounded-[var(--radius-md,8px)] border border-[var(--color-border,#e5e5e5)] outline-none transition-all duration-[var(--transition-speed,0.2s)] focus:border-[var(--color-primary,#6C63FF)] focus:ring-2 focus:ring-[var(--color-primary,#6C63FF)]/10"
+                      className="w-full px-4 py-3 text-sm rounded-(--radius-md,8px) border border-(--color-border,#e5e5e5) outline-none transition-all duration-(--transition-speed,0.2s) focus:border-(--color-primary,#6C63FF) focus:ring-2 focus:ring-(--color-primary,#6C63FF)/10"
                       style={{
                         background: "var(--color-surface,#f8f8f8)",
                         color: "var(--color-text-primary,#111)",
@@ -264,7 +264,7 @@ export function ContactSection({ content }: Props) {
                       value={form.email}
                       onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
                       placeholder="example@email.com"
-                      className="w-full px-4 py-3 text-sm rounded-[var(--radius-md,8px)] border border-[var(--color-border,#e5e5e5)] outline-none transition-all duration-[var(--transition-speed,0.2s)] focus:border-[var(--color-primary,#6C63FF)] focus:ring-2 focus:ring-[var(--color-primary,#6C63FF)]/10"
+                      className="w-full px-4 py-3 text-sm rounded-(--radius-md,8px) border border-(--color-border,#e5e5e5) outline-none transition-all duration-(--transition-speed,0.2s) focus:border-(--color-primary,#6C63FF) focus:ring-2 focus:ring-(--color-primary,#6C63FF)/10"
                       style={{
                         background: "var(--color-surface,#f8f8f8)",
                         color: "var(--color-text-primary,#111)",
@@ -286,7 +286,7 @@ export function ContactSection({ content }: Props) {
                       value={form.message}
                       onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
                       placeholder="اكتب رسالتك هنا..."
-                      className="w-full px-4 py-3 text-sm rounded-[var(--radius-md,8px)] border border-[var(--color-border,#e5e5e5)] outline-none transition-all duration-[var(--transition-speed,0.2s)] focus:border-[var(--color-primary,#6C63FF)] focus:ring-2 focus:ring-[var(--color-primary,#6C63FF)]/10 resize-none"
+                      className="w-full px-4 py-3 text-sm rounded-(--radius-md,8px) border border-(--color-border,#e5e5e5) outline-none transition-all duration-(--transition-speed,0.2s) focus:border-(--color-primary,#6C63FF) focus:ring-2 focus:ring-(--color-primary,#6C63FF)/10 resize-none"
                       style={{
                         background: "var(--color-surface,#f8f8f8)",
                         color: "var(--color-text-primary,#111)",
@@ -303,7 +303,7 @@ export function ContactSection({ content }: Props) {
                   <button
                     type="submit"
                     disabled={state === "loading"}
-                    className="w-full py-3.5 px-6 rounded-[var(--radius-md,8px)] text-sm font-medium text-white transition-all duration-[var(--transition-speed,0.2s)] hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-3.5 px-6 rounded-(--radius-md,8px) text-sm font-medium text-white transition-all duration-(--transition-speed,0.2s) hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ background: "var(--color-primary,#6C63FF)" }}
                   >
                     {state === "loading" ? (

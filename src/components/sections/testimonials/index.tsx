@@ -15,7 +15,7 @@ function Stars({ n }: { n: number }) {
 
 function Card({ item }: { item: TestimonialsContent["items"][number] }) {
   return (
-    <div className="p-6 rounded-[var(--radius-lg,16px)] border border-[var(--color-border,#e5e5e5)] space-y-4"
+    <div className="p-6 rounded-(--radius-lg,16px) border border-(--color-border,#e5e5e5) space-y-4"
       style={{ background:"var(--color-background,#fff)", boxShadow:"var(--shadow-card)" }}>
       <Stars n={item.rating} />
       <p className="text-sm leading-relaxed italic" style={{ color:"var(--color-text-secondary,#555)" }}>"{item.quote}"</p>
@@ -41,14 +41,14 @@ export function TestimonialsSection({ content: c, variant }: Props) {
 
   const header = c.heading ? (
     <div className="text-center mb-12">
-      <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-[var(--font-weight-heading,700)]"
+      <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-(--font-weight-heading,700)"
         style={{ fontFamily:"var(--font-heading,sans-serif)", color:"var(--color-heading,#111)" }}>{c.heading}</h2>
       {c.subheading && <p className="text-base mt-3" style={{ color:"var(--color-text-secondary,#555)" }}>{c.subheading}</p>}
     </div>
   ) : null;
 
   if (variant === "slider") return (
-    <section className="py-[var(--section-padding-y,6rem)] bg-[var(--color-surface,#f8f8f8)]">
+    <section className="py-(--section-padding-y,6rem) bg-(--color-surface,#f8f8f8)">
       <div className="mx-auto max-w-2xl px-6">
         {header}
         {c.items[active] && <Card item={c.items[active]} />}
@@ -65,12 +65,12 @@ export function TestimonialsSection({ content: c, variant }: Props) {
 
   // masonry: same grid but CSS columns
   if (variant === "masonry") return (
-    <section className="py-[var(--section-padding-y,6rem)] bg-[var(--color-surface,#f8f8f8)]">
-      <div className="mx-auto max-w-[var(--container-max-width,1200px)] px-6">
+    <section className="py-(--section-padding-y,6rem) bg-(--color-surface,#f8f8f8)">
+      <div className="mx-auto max-w-(--container-max-width,1200px) px-6">
         {header}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-[var(--gap-cards,24px)]">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-(--gap-cards,24px)">
           {c.items.map(item => (
-            <div key={item.id} className="mb-[var(--gap-cards,24px)] break-inside-avoid">
+            <div key={item.id} className="mb-(--gap-cards,24px) break-inside-avoid">
               <Card item={item} />
             </div>
           ))}
@@ -81,10 +81,10 @@ export function TestimonialsSection({ content: c, variant }: Props) {
 
   // default: grid
   return (
-    <section className="py-[var(--section-padding-y,6rem)] bg-[var(--color-surface,#f8f8f8)]">
-      <div className="mx-auto max-w-[var(--container-max-width,1200px)] px-6">
+    <section className="py-(--section-padding-y,6rem) bg-(--color-surface,#f8f8f8)">
+      <div className="mx-auto max-w-(--container-max-width,1200px) px-6">
         {header}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--gap-cards,24px)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-(--gap-cards,24px)">
           {c.items.map(item => <Card key={item.id} item={item} />)}
         </div>
       </div>

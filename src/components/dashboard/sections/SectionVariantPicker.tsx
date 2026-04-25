@@ -18,7 +18,7 @@ export function SectionVariantPicker({ sectionType, selectedVariant, onSelect, o
     <div className="space-y-5">
       <div className="flex items-center gap-3">
         <button onClick={onBack}
-          className="w-8 h-8 rounded-lg border border-[var(--color-border,#e5e5e5)] flex items-center justify-center"
+          className="w-8 h-8 rounded-lg border border-(--color-border,#e5e5e5) flex items-center justify-center"
           style={{ color:"var(--color-text-secondary,#555)" }}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M9 3L5 7l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -36,7 +36,7 @@ export function SectionVariantPicker({ sectionType, selectedVariant, onSelect, o
           const selected = v.id === selectedVariant;
           return (
             <button key={v.id} onClick={() => onSelect(v.id)}
-              className={`flex flex-col gap-3 p-4 rounded-xl border-2 text-left transition-all ${selected ? "border-[var(--color-primary,#6C63FF)]" : "border-[var(--color-border,#e5e5e5)] hover:border-[var(--color-primary,#6C63FF)]/50 hover:-translate-y-0.5"}`}
+              className={`flex flex-col gap-3 p-4 rounded-xl border-2 text-left transition-all ${selected ? "border-(--color-primary,#6C63FF)" : "border-(--color-border,#e5e5e5) hover:border-(--color-primary,#6C63FF)/50 hover:-translate-y-0.5"}`}
               style={{ background: selected ? "color-mix(in srgb,var(--color-primary,#6C63FF) 4%,var(--color-background,#fff))" : "var(--color-background,#fff)" }}>
               <div className="w-full h-20 rounded-lg flex items-center justify-center text-2xl"
                 style={{ background: selected ? "color-mix(in srgb,var(--color-primary,#6C63FF) 10%,transparent)" : "var(--color-surface,#f8f8f8)" }}>

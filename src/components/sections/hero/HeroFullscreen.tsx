@@ -13,19 +13,19 @@ export function HeroFullscreen({ content: c }: { content: HeroContent }) {
             {c.badgeText}
           </span>
         )}
-        <h1 className="text-[clamp(3rem,7vw,6rem)] font-[var(--font-weight-heading,700)] leading-[1.05] tracking-tight text-white">
+        <h1 className="text-[clamp(3rem,7vw,6rem)] font-(--font-weight-heading,700) leading-[1.05] tracking-tight text-white">
           {c.headline}
         </h1>
         {c.subheadline && <p className="text-lg text-white/80 max-w-xl mx-auto leading-relaxed">{c.subheadline}</p>}
         <div className="flex flex-wrap gap-3 justify-center pt-2">
           {c.ctaText && (
-            <a href={c.ctaUrl || "#"} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[var(--radius-md,8px)] font-medium bg-white transition-all hover:opacity-90"
+            <a href={c.ctaUrl || "#"} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-(--radius-md,8px) font-medium bg-white transition-all hover:opacity-90"
               style={{ color:"var(--color-primary,#6C63FF)" }}>
               {c.ctaText}
             </a>
           )}
           {c.secondaryCtaText && (
-            <a href={c.secondaryCtaUrl || "#"} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[var(--radius-md,8px)] font-medium border border-white/40 text-white hover:bg-white/10 transition-all">
+            <a href={c.secondaryCtaUrl || "#"} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-(--radius-md,8px) font-medium border border-white/40 text-white hover:bg-white/10 transition-all">
               {c.secondaryCtaText}
             </a>
           )}

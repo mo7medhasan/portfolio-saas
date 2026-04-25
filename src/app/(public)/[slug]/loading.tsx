@@ -1,7 +1,7 @@
 // src/app/(public)/[slug]/loading.tsx
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-[var(--color-background,#fff)] animate-pulse">
+    <div className="min-h-screen bg-(--color-background,#fff) animate-pulse">
       {/* Skeleton Hero */}
       <div
         className="w-full h-screen flex flex-col items-center justify-center gap-6 px-6"
@@ -16,7 +16,7 @@ export default function Loading() {
           style={{ background: "var(--color-border,#e5e5e5)" }}
         />
         <div
-          className="h-12 w-36 rounded-[var(--radius-md,8px)]"
+          className="h-12 w-36 rounded-(--radius-md,8px)"
           style={{ background: "var(--color-border,#e5e5e5)" }}
         />
       </div>
