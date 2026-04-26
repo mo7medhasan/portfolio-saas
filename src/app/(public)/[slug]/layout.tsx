@@ -67,7 +67,7 @@ export default async function PortfolioLayout({ params, children }: Props) {
 
       {/* Design Tokens — CSS Variables (hoisted into <head> by Next.js) */}
       <style>{`
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; }
         :root {
           ${lightVars}
           font-size: var(--font-size-base, 16px);

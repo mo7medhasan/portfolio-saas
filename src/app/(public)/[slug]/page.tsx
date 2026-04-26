@@ -5,6 +5,7 @@ import { getPortfolioBySlug } from "@/db/queries/portfolio";
 import { SectionRenderer } from "@/components/portfolio/SectionRenderer";
 import { PasswordGate } from "@/components/portfolio/PasswordGate";
 import type { Metadata } from "next";
+import { SectionRow } from "@/types/sections";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -77,8 +78,8 @@ export default async function PortfolioPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <main>
-        {portfolio.sections.map((section) => (
-          <SectionRenderer key={section.id} section={section} />
+        {portfolio.sections.map((section ) => (
+          <SectionRenderer key={section.id} section={section as SectionRow} />
         ))}
       </main>
     </>

@@ -226,7 +226,7 @@ function SliderRow({
 
 // ── Main ThemeEditor ──────────────────────────────────────
 export function ThemeEditor() {
-  const { tokens, isLoading, isSaving, updateToken, applyPreset, resetToken, hasUnsavedChanges } =
+  const { tokens, isLoading, isSaving, updateToken, resetToken, hasUnsavedChanges } =
     useTokens();
 
   const [activeTab, setActiveTab] = useState<"colors" | "typography" | "spacing">("colors");
@@ -298,13 +298,20 @@ export function ThemeEditor() {
           {BUILT_IN_PRESETS.map((preset) => (
             <button
               key={preset.id}
-              onClick={() => applyPreset(preset.id)}
+              onClick={() => {
+                // Apply locally using updateToken for instant preview and debounced save
+                updateToken("--color-primary", preset.colors.primary);
+                if (preset.colors.accent) {
+                  updateToken("--color-accent", preset.colors.accent);
+                }
+                
+              }}
               disabled={isSaving}
               className="flex items-center gap-2 px-3 py-2.5 rounded-lg border border-(--color-border,#e5e5e5) text-left transition-all hover:border-(--color-primary,#6C63FF) hover:-translate-y-0.5 disabled:opacity-50"
               style={{ background: "var(--color-background,#fff)" }}
             >
               {/* Color preview dots */}
-              <div className="flex gap-1 flex-shrink-0">
+              <div className="flex gap-1  shrink-0">
                 <div
                   className="w-3 h-3 rounded-full"
                   style={{ background: preset.colors.primary }}
