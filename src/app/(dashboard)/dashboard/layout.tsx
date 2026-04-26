@@ -36,7 +36,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         <Sidebar
           portfolioSlug={portfolio.slug}
           portfolioTitle={portfolio.title}
-          userName={session.user.name ?? session.user.email}
+          userName={session.user.name ?? session.user.email ?? "User"}
           unreadCount={Number(unreadCount)}
         />
       </div>

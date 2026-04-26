@@ -1,11 +1,26 @@
 // src/auth.ts
-import NextAuth from "next-auth";
+import NextAuth, { type DefaultSession } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import Credentials from "next-auth/providers/credentials";
 import { db } from "@/db";
-import { users } from "@/db/schema";  // ← بس users
-import { eq } from "drizzle-orm";      // ← بس eq
+import { users } from "@/db/schema";
+import { eq } from "drizzle-orm";
 import { compare } from "bcryptjs";
 import { z } from "zod";
+
+declare module "next-auth" {
+  interface User {
+    role?: string | null;
+  }
+  interface Session {
+    user: {
+      id: string;
+      role?: string | null;
+    } & DefaultSession["user"];
+  }
+}
+
+
 
 const credentialsSchema = z.object({
   email: z.string().email("إيميل غير صحيح"),
@@ -57,8 +72,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.role = user.role;
+        token.id = user.id as string;
+        token.role = user.role as string  ;
       }
       return token;
     },
